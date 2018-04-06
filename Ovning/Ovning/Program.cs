@@ -10,6 +10,7 @@ namespace Ovning
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Välkommen till menyn!");
         }
     }
 }
