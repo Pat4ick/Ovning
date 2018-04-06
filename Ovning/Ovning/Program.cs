@@ -10,13 +10,22 @@ namespace Ovning
     {
         static void Main(string[] args)
         {
+
+
             Console.WriteLine("Välkommen till huvudmenyn!\n" +
-                              "Navigera genom att ange den siffra som motsvarar menyvalet.\n\n" +
+                              "Navigera genom att ange den siffra som motsvarar menyvalet - avsluta med <Enter>.\n\n" +
                               "0 - Programmet stängs\n" +
                               "1 - Evig loop\n" +
                               "2 - Ej implementerat");
 
-            bool correctlyFormatted = int.TryParse(Console.ReadLine(), out int choice);
+            bool isANumber = false;
+            int choice = 0;
+
+            do
+            {
+                isANumber = int.TryParse(Console.ReadLine(), out choice);
+
+            } while (!isANumber);
 
 
 
