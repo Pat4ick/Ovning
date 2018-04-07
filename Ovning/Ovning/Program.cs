@@ -15,19 +15,16 @@ namespace Ovning
             Console.WriteLine("Välkommen till huvudmenyn!\n" +
                               "Navigera genom att ange den siffra som motsvarar menyvalet - avsluta med <Enter>.\n\n" +
                               "0 - Programmet stängs\n" +
-                              "1 - Evig loop\n" +
+                              "1 - Bioprisutraknare\n" +
                               "2 - Ej implementerat");
 
-            bool isANumber = false;
+            
             int choice = 0;
 
-            do
-            {
-                isANumber = int.TryParse(Console.ReadLine(), out choice);
-
-            } while (!isANumber);
-
-
+            // Keep trying to input answer until getting a valid number, an integer 
+            while (!int.TryParse(Console.ReadLine(), out choice)) 
+                Console.WriteLine("Det du angav var inte en siffra, försok igen");     
+            
 
             switch (choice)
             {
