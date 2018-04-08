@@ -107,7 +107,9 @@ namespace Ovning
         private static string RequestSentence()
         {
             string text;
-            while (((text = Console.ReadLine()).Count(x => x == ' ') < 2))
+            // simultanously read the input string, count the number of spaces and 
+            //repeat if not finding at least 2 -> at least three words
+            while (((text = Console.ReadLine()).Count(letter => letter == ' ') < 2))
             {
                 Console.WriteLine($"Texten innehåller för få ord, minst tre ord tack.");
                 PauseForKeyPress();
