@@ -21,22 +21,24 @@ namespace Ovning
                                   "Navigera genom att ange den siffra som motsvarar menyvalet - avsluta med <Enter>.\n\n" +
                                   "0 - Programmet stängs\n" +
                                   "1 - Bioprisuträknare\n" +
-                                  "2 - Upprepa text");
+                                  "2 - Upprepa text\n" +
+                                  "3 - Tredje ordet\n");
 
                 // Keep trying to input answer until getting a valid number, an integer 
                 int choice = RequestInt();
 
+                // Main menu
                 switch (choice)
                 {
-                    case 0:
+                    case 0: // Exit the program
                         Console.WriteLine("Stänger ner programmet");
                         running = false;
-                        PauseForKeyPress();
+                        PauseForKeyPress(); // pausing
                         break;
-                    case 1:
+                    case 1: // Calculates ticket prices
                         Console.WriteLine("Priskalkylator för biobesök\n" +
                                           "Vänligen uppge din ålder:\n");
-                        int age = RequestInt();
+                        int age = RequestInt(); // validated user input (only an integer response accepted)
 
                         if(age < 20)
                         {
@@ -52,28 +54,40 @@ namespace Ovning
                         }
                         PauseForKeyPress();
                         
-
                         break;
-                    case 2:
+
+                    case 2: // Repeat entered text ten times
                         Console.WriteLine("Uppepa tio gånger\n" +
                                           "Ange en text som du vill få upprepad tio gånger:\n");
                         string text = Console.ReadLine();
                         for (int i = 1; i < 11; i++  ){
                             Console.Write($"{i}.{text} ");
                         }
+                        PauseForKeyPress(); 
+                        break;
+
+                    case 3: // Prints out the third word in a sentence
+                        Console.WriteLine("Tredje ordet\n" +
+                                          "Ange en mening med minst tre ord:\n");
+                        text = RequestSentence(); // validated user input
+                        string[] words = text.Split(' ');
+                        Console.WriteLine($"Ord nummer tre är {words[2]}");
                         PauseForKeyPress();
                         break;
-                    default:
+
+
+                    default: // Default response
                         Console.WriteLine("Du har angivet ett felaktig menyval");
                         PauseForKeyPress();
                         break;
 
-
+                    
 
                 }
             }
         }
 
+        // Validate input (only an integer response accepted)
         private static int RequestInt()
         {
             int number;
@@ -82,6 +96,20 @@ namespace Ovning
             return number;
         }
 
+        // Validate input (accept only a sentence with at least 3 words)
+        private static string RequestSentence()
+        {
+            string text;
+            while (((text = Console.ReadLine()).Count(x => x == ' ') < 2))
+            {
+                Console.WriteLine($"Texten innehåller för få ord, minst tre ord tack.");
+                PauseForKeyPress();
+            }
+
+            return text;
+        }
+
+        // Helper method for pausing the program to give the user time to read previous output
         private static void PauseForKeyPress()
         {
             Console.WriteLine("\nTryck någon knapp för att fortsätta");
