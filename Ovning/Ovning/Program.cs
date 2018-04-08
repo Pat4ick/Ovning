@@ -21,7 +21,7 @@ namespace Ovning
                                   "Navigera genom att ange den siffra som motsvarar menyvalet - avsluta med <Enter>.\n\n" +
                                   "0 - Programmet stängs\n" +
                                   "1 - Bioprisuträknare\n" +
-                                  "2 - Ej implementerat");
+                                  "2 - Upprepa text");
 
                 // Keep trying to input answer until getting a valid number, an integer 
                 int choice = RequestInt();
@@ -57,8 +57,12 @@ namespace Ovning
                     case 2:
                         Console.WriteLine("Uppepa tio gånger\n" +
                                           "Ange en text som du vill få upprepad tio gånger:\n");
-                        string text 
-
+                        string text = Console.ReadLine();
+                        for (int i = 1; i < 11; i++  ){
+                            Console.Write($"{i}.{text} ");
+                        }
+                        PauseForKeyPress();
+                        break;
                     default:
                         Console.WriteLine("Du har angivet ett felaktig menyval");
                         PauseForKeyPress();
@@ -74,7 +78,7 @@ namespace Ovning
         {
             int number;
             while (!int.TryParse(Console.ReadLine(), out number))
-                    Console.WriteLine("Det du angav var inte en siffra, försok igen");
+                    Console.WriteLine("Det du angav var inte en siffra, försök igen");
             return number;
         }
 
