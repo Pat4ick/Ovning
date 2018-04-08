@@ -39,14 +39,21 @@ namespace Ovning
                         Console.WriteLine("Priskalkylator för biobesök\n" +
                                           "Vänligen uppge din ålder:\n");
                         int age = RequestInt(); // validated user input (only an integer response accepted)
+                        if (age < 5){
+                            Console.WriteLine("Barn under 5 - gratis.");
+                        }
 
                         if(age < 20)
                         {
                             Console.WriteLine("Ungdomspris 80kr");
                         }
-                        else if(age > 64)
+                        else if(age > 64 && age < 100)
                         {
                             Console.WriteLine("Pensionärspris 90kr");
+                        }
+                        else if(age > 100)
+                        {
+                            Console.WriteLine("Pris för äldre pensionärer - gratis");
                         }
                         else
                         {
